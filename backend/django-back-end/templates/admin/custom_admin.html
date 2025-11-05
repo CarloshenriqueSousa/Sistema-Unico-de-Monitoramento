@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.U.M - Documentation API</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #17181e;
+            color: #fcfcfc;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        .api-header {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(37, 99, 235, 0.05));
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 24px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .api-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .logo {
+            font-size: 3rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: rgba(252, 252, 252, 0.7);
+            margin-bottom: 1.5rem;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 50px;
+            color: #10b981;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* Auth Banner */
+        .auth-banner {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .auth-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .auth-banner h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .code-block {
+            background: rgba(23, 24, 30, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-family: 'Monaco', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+
+        /* Layout */
+        .api-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Sidebar */
+        .api-sidebar {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(37, 99, 235, 0.02));
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            border-radius: 20px;
+            padding: 2rem;
+            height: fit-content;
+            position: sticky;
+            top: 2rem;
+        }
+
+        .nav-section {
+            margin-bottom: 2rem;
+        }
+
+        .nav-title {
+            font-weight: 700;
+            color: #fcfcfc;
+            margin-bottom: 1rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #3b82f6;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-list {
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-item a {
+            color: rgba(252, 252, 252, 0.6);
+            text-decoration: none;
+            padding: 0.75rem 1rem;
+            border-radius: 10px;
+            display: block;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .nav-item a:hover,
+        .nav-item a.active {
+            background: rgba(59, 130, 246, 0.15);
+            color: #3b82f6;
+            transform: translateX(5px);
+        }
+
+        /* Main Content */
+        .api-content {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(37, 99, 235, 0.02));
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            border-radius: 20px;
+            padding: 2.5rem;
+        }
+
+        .endpoint-section {
+            margin-bottom: 3rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+        }
+
+        .endpoint-section:last-child {
+            border-bottom: none;
+        }
+
+        .endpoint-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #fcfcfc;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .endpoint-title i {
+            color: #3b82f6;
+        }
+
+        .endpoint-description {
+            color: rgba(252, 252, 252, 0.7);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .endpoint-item {
+            background: rgba(59, 130, 246, 0.05);
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s;
+        }
+
+        .endpoint-item:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateX(5px);
+        }
+
+        .method {
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .method-get { background: rgba(16, 185, 129, 0.2); color: #10b981; }
+        .method-post { background: rgba(59, 130, 246, 0.2); color: #3b82f6; }
+        .method-put { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+        .method-delete { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+
+        .endpoint-path {
+            font-family: 'Monaco', monospace;
+            color: #60a5fa;
+            font-weight: 600;
+        }
+
+        .code-example {
+            background: rgba(23, 24, 30, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            font-family: 'Monaco', monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .code-example::before {
+            content: 'JSON';
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            padding: 0.25rem 0.5rem;
+            background: rgba(59, 130, 246, 0.2);
+            border-radius: 4px;
+            font-size: 0.7rem;
+            color: #3b82f6;
+        }
+
+        .response-example {
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .response-example h4 {
+            color: #10b981;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .status-codes {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .status-code {
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status-200 { background: rgba(16, 185, 129, 0.15); color: #10b981; }
+        .status-400 { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+        .status-401 { background: rgba(239, 68, 68, 0.15); color: #ef4444; }
+
+        /* Quick Access */
+        .quick-access {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(37, 99, 235, 0.02));
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            border-radius: 20px;
+            padding: 2rem;
+        }
+
+        .quick-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .quick-btn {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: #fcfcfc;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .quick-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        }
+
+        .try-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Animations */
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .api-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .api-sidebar {
+                position: relative;
+                top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="api-header fade-in">
+            <div class="logo">
+                <i class="fas fa-code"></i> S.U.M API
+            </div>
+            <p class="subtitle">Sistema Unificado de Mapeamento - Documentação da API</p>
+            <div class="status-badge">
+                <i class="fas fa-circle pulse"></i>
+                API Online - v1.0.0
+            </div>
+        </div>
+
+        <!-- Auth Info -->
+        <div class="auth-banner fade-in">
+            <h3><i class="fas fa-key"></i> Autenticação</h3>
+            <p style="color: rgba(255,255,255,0.9);">A API utiliza JWT (JSON Web Tokens) para autenticação. Inclua o token no header Authorization: Bearer &lt;token&gt;</p>
+            <div class="code-block">
+                curl -H "Authorization: Bearer YOUR_JWT_TOKEN" https://api.sum.local/api/endpoint
+            </div>
+        </div>
+
+        <!-- Layout -->
+        <div class="api-layout">
+            <!-- Sidebar -->
+            <div class="api-sidebar">
+                <div class="nav-section">
+                    <h3 class="nav-title">Navegação</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="#overview" class="active">Visão Geral</a></li>
+                        <li class="nav-item"><a href="#auth">Autenticação</a></li>
+                        <li class="nav-item"><a href="#users">Usuários</a></li>
+                        <li class="nav-item"><a href="#schools">Escolas</a></li>
+                        <li class="nav-item"><a href="#students">Estudantes</a></li>
+                        <li class="nav-item"><a href="#teachers">Professores</a></li>
+                        <li class="nav-item"><a href="#activities">Atividades</a></li>
+                        <li class="nav-item"><a href="#mapping">Mapeamento</a></li>
+                    </ul>
+                </div>
+                
+                <div class="nav-section">
+                    <h3 class="nav-title">Recursos</h3>
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="/api/health/">Health Check</a></li>
+                        <li class="nav-item"><a href="/admin/">Admin Panel</a></li>
+                        <li class="nav-item"><a href="/">Frontend</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="api-content">
+                <!-- Overview -->
+                <div class="endpoint-section" id="overview">
+                    <h2 class="endpoint-title">
+                        <i class="fas fa-info-circle"></i>
+                        Visão Geral
+                    </h2>
+                    <p class="endpoint-description">
+                        A API do S.U.M fornece endpoints para gerenciar escolas, estudantes, professores, atividades e o sistema de mapeamento inteligente de salas de aula.
+                    </p>
+                    <div class="code-example">
+# Base URL
+https://api.sum.local/api/
+
+# Exemplo de requisição
+curl -X GET https://api.sum.local/api/health/
+                    </div>
+                </div>
+
+                <!-- Auth -->
+                <div class="endpoint-section" id="auth">
+                    <h2 class="endpoint-title">
+                        <i class="fas fa-key"></i>
+                        Autenticação
+                    </h2>
+                    <p class="endpoint-description">Endpoints para autenticação e gerenciamento de usuários.</p>
+                    
+                    <div class="endpoint-item">
+                        <span class="method method-post">POST</span>
+                        <span class="endpoint-path">/api/auth/login/</span>
+                        <span>Login de usuário</span>
+                    </div>
+                    
+                    <div class="code-example">
+{
+  "identifier": "usuario123",
+  "password": "senha123"
+}
+                    </div>
+                    
+                    <div class="response-example">
+                        <h4>Resposta de Sucesso:</h4>
+                        <div class="code-example">
+{
+  "access": "eyJ0eXAiOiJKV1QiLCJhbGc...",
+  "refresh": "eyJ0eXAiOiJKV1QiLCJh...",
+  "user": {
+    "id": 1,
+    "identifier": "usuario123",
+    "nome": "João Silva"
+  }
+}
+                        </div>
+                    </div>
+                    
+                    <div class="status-codes">
+                        <span class="status-code status-200">200 OK</span>
+                        <span class="status-code status-401">401 Unauthorized</span>
+                    </div>
+                </div>
+
+                <!-- Schools -->
+                <div class="endpoint-section" id="schools">
+                    <h2 class="endpoint-title">
+                        <i class="fas fa-school"></i>
+                        Escolas
+                    </h2>
+                    <p class="endpoint-description">Gerenciamento de escolas e turmas.</p>
+                    
+                    <div class="endpoint-item">
+                        <span class="method method-get">GET</span>
+                        <span class="endpoint-path">/api/escola/</span>
+                        <span>Listar escolas</span>
+                    </div>
+                    
+                    <div class="endpoint-item">
+                        <span class="method method-post">POST</span>
+                        <span class="endpoint-path">/api/escola/</span>
+                        <span>Criar escola</span>
+                    </div>
+                    
+                    <div class="endpoint-item">
+                        <span class="method method-get">GET</span>
+                        <span class="endpoint-path">/api/escola/turmas/</span>
+                        <span>Listar turmas</span>
+                    </div>
+                </div>
+
+                <!-- Mapping -->
+                <div class="endpoint-section" id="mapping">
+                    <h2 class="endpoint-title">
+                        <i class="fas fa-map-marked-alt"></i>
+                        Mapeamento
+                    </h2>
+                    <p class="endpoint-description">Sistema de mapeamento inteligente de salas de aula.</p>
+                    
+                    <div class="endpoint-item">
+                        <span class="method method-post">POST</span>
+                        <span class="endpoint-path">/api/mapeamento/gerar/</span>
+                        <span>Gerar novo mapeamento</span>
+                    </div>
+                    
+                    <div class="endpoint-item">
+                        <span class="method method-get">GET</span>
+                        <span class="endpoint-path">/api/mapeamento/atual/{uuid}/</span>
+                        <span>Mapeamento atual</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Access -->
+        <div class="quick-access fade-in">
+            <h3 style="text-align:center; margin-bottom:1rem;"><i class="fas fa-bolt"></i> Acesso Rápido</h3>
+            <div class="quick-buttons">
+                <a href="/api/health/" class="quick-btn">
+                    <i class="fas fa-heartbeat"></i> Health Check
+                </a>
+                <a href="/admin/" class="quick-btn">
+                    <i class="fas fa-cog"></i> Admin Panel
+                </a>
+                <a href="/" class="quick-btn">
+                    <i class="fas fa-home"></i> Frontend
+                </a>
+                <button class="quick-btn try-btn" onclick="alert('API Test: OK ✓')">
+                    <i class="fas fa-play"></i> Testar API
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

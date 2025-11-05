@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cor-primaria: #fcfcfc;
+  --cor-fundo: #17181e;
+  --cor-azul-prim: #3A86FF;
+  --cor-azul-sec: #3498db;
+  --cor-azul-light: #add8e6;
+  --cor-cinza: #6b6b6b;
+}
+
+/* Animação de entrada */
+.fade-enter-active {
+  animation: fadeIn 0.5s;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Efeito glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(52,152,219,0.10);
+  box-shadow: 0 2px 22px rgba(16, 23, 50, 0.13);
+  backdrop-filter: blur(16px);
+}
+
+.card-style {
+  background: rgba(250, 250, 255, 0.12);
+  border: 1.5px solid rgba(58, 134, 255, 0.14);
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(23,24,30,0.08);
+  backdrop-filter: blur(12px);
+}
+.button-main {
+  background: var(--cor-azul-prim);
+  color: var(--cor-primaria);
+  border-radius: 12px;
+  font-weight: 700;
+  box-shadow: 0 2px 20px rgba(58,134,255,0.10);
+  padding: 10px 24px;
+  transition: background 0.15s, box-shadow 0.15s;
+}
+.button-main:hover {
+  background: var(--cor-azul-sec);
+  box-shadow: 0 6px 24px rgba(58,134,255,0.12);
+}

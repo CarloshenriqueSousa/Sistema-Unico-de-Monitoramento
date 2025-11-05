@@ -1,0 +1,339 @@
+<--
+    generic_error.html
+->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.U.M - Erro</title>
+    <link rel="stylesheet" href="/static/css/sum-custom.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .error-page {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .error-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 4rem;
+            text-align: center;
+            max-width: 600px;
+            width: 100%;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .error-animation {
+            font-size: 8rem;
+            color: #f59e0b;
+            margin-bottom: 2rem;
+            animation: wobble 2s ease-in-out infinite;
+        }
+        
+        @keyframes wobble {
+            0%, 100% {
+                transform: rotate(0deg);
+            }
+            25% {
+                transform: rotate(-5deg);
+            }
+            75% {
+                transform: rotate(5deg);
+            }
+        }
+        
+        .error-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .error-subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .error-description {
+            color: #888;
+            margin-bottom: 3rem;
+            font-size: 1rem;
+        }
+        
+        .error-actions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .error-btn {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .error-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+            color: white;
+        }
+        
+        .error-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .error-btn.secondary {
+            background: transparent;
+            border: 2px solid #f59e0b;
+            color: #f59e0b;
+        }
+        
+        .error-btn.secondary:hover {
+            background: #f59e0b;
+            color: white;
+        }
+        
+        .error-code {
+            background: rgba(245, 158, 11, 0.1);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 2rem 0;
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .error-code h4 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .error-code pre {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.8rem;
+            margin: 0;
+        }
+        
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+        
+        .floating-element:nth-child(3) {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
+        }
+        
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin: 1rem 0;
+        }
+        
+        .status-warning {
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="error-page">
+        <!-- Floating Elements -->
+        <div class="floating-elements">
+            <div class="floating-element">
+                <i class="fas fa-exclamation-circle" style="font-size: 3rem; color: white;"></i>
+            </div>
+            <div class="floating-element">
+                <i class="fas fa-question-circle" style="font-size: 2rem; color: white;"></i>
+            </div>
+            <div class="floating-element">
+                <i class="fas fa-info-circle" style="font-size: 2.5rem; color: white;"></i>
+            </div>
+        </div>
+
+        <div class="error-container fade-in">
+            <div class="error-animation">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            
+            <h1 class="error-title">Algo deu errado</h1>
+            <p class="error-subtitle">Encontramos um problema inesperado. Não se preocupe, nossa equipe foi notificada.</p>
+            
+            <div class="status-indicator status-warning">
+                <i class="fas fa-circle" style="margin-right: 0.5rem; font-size: 0.6rem;"></i>
+                Problema Detectado
+            </div>
+            
+            <div class="error-description">
+                <p>Este erro pode ser temporário. Tente recarregar a página ou volte mais tarde.</p>
+            </div>
+
+            <div class="error-actions">
+                <a href="/" class="error-btn">
+                    <i class="fas fa-home"></i>
+                    Voltar ao Início
+                </a>
+                <button onclick="location.reload()" class="error-btn secondary">
+                    <i class="fas fa-redo"></i>
+                    Recarregar Página
+                </button>
+                <a href="/api/health/" class="error-btn secondary">
+                    <i class="fas fa-heartbeat"></i>
+                    Verificar Status
+                </a>
+                <button onclick="history.back()" class="error-btn secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Voltar
+                </button>
+            </div>
+
+            <div class="error-code">
+                <h4>
+                    <i class="fas fa-code"></i>
+                    Informações do Erro
+                </h4>
+                <pre><code>Erro: {{ error_message|default:"Erro desconhecido" }}
+Código: {{ error_code|default:"N/A" }}
+Timestamp: {{ timestamp|default:"N/A" }}
+Sessão: {{ session_id|default:"N/A" }}</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <script>
+        // Dark Mode Toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const icon = document.querySelector('.dark-mode-toggle i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.className = 'fas fa-sun';
+            } else {
+                icon.className = 'fas fa-moon';
+            }
+        }
+
+        // Add some interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate the error icon
+            const errorIcon = document.querySelector('.error-animation');
+            errorIcon.addEventListener('click', function() {
+                this.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+            });
+
+            // Add typing effect to title
+            const title = document.querySelector('.error-title');
+            const originalText = title.textContent;
+            title.textContent = '';
+            
+            let i = 0;
+            const typeWriter = () => {
+                if (i < originalText.length) {
+                    title.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            };
+            
+            setTimeout(typeWriter, 1000);
+        });
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'r' || e.key === 'R') {
+                location.reload();
+            } else if (e.key === 'h' || e.key === 'H') {
+                window.location.href = '/';
+            } else if (e.key === 's' || e.key === 'S') {
+                window.location.href = '/api/health/';
+            } else if (e.key === 'Escape') {
+                history.back();
+            }
+        });
+
+        // Add helpful tips
+        function showTips() {
+            const tips = [
+                "Verifique sua conexão com a internet",
+                "Limpe o cache do seu navegador",
+                "Tente usar um navegador diferente",
+                "Desative temporariamente extensões do navegador",
+                "Verifique se o JavaScript está habilitado"
+            ];
+            
+            const randomTip = tips[Math.floor(Math.random() * tips.length)];
+            alert('💡 Dica: ' + randomTip);
+        }
+
+        // Show tips after 5 seconds
+        setTimeout(showTips, 5000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+[
+    {
+        "model": "atividades.questaoBanco",
+        "pk": 1,
+        "fields": {
+            "conteudo": "Qual é a capital do Brasil?",
+            "area": "GEOGRAFIA",
+            "dificuldade": "FACIL",
+            "tipo": "MULTIPLA_ESCOLHA",
+            "resposta_correta": "Brasília",
+            "opcoes": ["São Paulo", "Brasília", "Rio de Janeiro", "Belo Horizonte"],
+            "padrao_sistema": true,
+            "vezes_utilizada": 0,
+            "taxa_acerto": 0.0
+        }
+    },
+    {
+        "model": "atividades.questaoBanco",
+        "pk": 2,
+        "fields": {
+            "conteudo": "Qual é o resultado de 25 + 17?",
+            "area": "MATEMATICA",
+            "dificuldade": "FACIL",
+            "tipo": "MULTIPLA_ESCOLHA",
+            "resposta_correta": "42",
+            "opcoes": ["40", "41", "42", "43"],
+            "padrao_sistema": true,
+            "vezes_utilizada": 0,
+            "taxa_acerto": 0.0
+        }
+    },
+    {
+        "model": "atividades.questaoBanco",
+        "pk": 3,
+        "fields": {
+            "conteudo": "Identifique o sujeito na frase: 'João estuda muito.'",
+            "area": "PORTUGUES",
+            "dificuldade": "FACIL",
+            "tipo": "MULTIPLA_ESCOLHA",
+            "resposta_correta": "João",
+            "opcoes": ["João", "estuda", "muito", "João estuda"],
+            "padrao_sistema": true,
+            "vezes_utilizada": 0,
+            "taxa_acerto": 0.0
+        }
+    },
+    {
+        "model": "atividades.questaoBanco",
+        "pk": 4,
+        "fields": {
+            "conteudo": "Em que ano foi descoberto o Brasil?",
+            "area": "HISTORIA",
+            "dificuldade": "FACIL",
+            "tipo": "MULTIPLA_ESCOLHA",
+            "resposta_correta": "1500",
+            "opcoes": ["1498", "1500", "1502", "1505"],
+            "padrao_sistema": true,
+            "vezes_utilizada": 0,
+            "taxa_acerto": 0.0
+        }
+    },
+    {
+        "model": "atividades.questaoBanco",
+        "pk": 5,
+        "fields": {
+            "conteudo": "Qual é o maior planeta do Sistema Solar?",
+            "area": "CIENCIAS",
+            "dificuldade": "FACIL",
+            "tipo": "MULTIPLA_ESCOLHA",
+            "resposta_correta": "Júpiter",
+            "opcoes": ["Terra", "Júpiter", "Saturno", "Marte"],
+            "padrao_sistema": true,
+            "vezes_utilizada": 0,
+            "taxa_acerto": 0.0
+        }
+    },
+    {
+        "model": "atividades.questaoBanco",
+        "pk": 6,
+        "fields": {
+            "conteudo": "How do you say 'Olá' in English?",
+            "area": "INGLES",
+            "dificuldade": "FACIL",
+            "tipo": "MULTIPLA_ESCOLHA",
+            "resposta_correta": "Hello",
+            "opcoes": ["Hi", "Hello", "Hey", "Good morning"],
+            "padrao_sistema": true,
+            "vezes_utilizada": 0,
+            "taxa_acerto": 0.0
+        }
+    },
+    {
+        "model": "atividades.questaoBanco",
+        "pk": 7,
+        "fields": {
+            "conteudo": "Calcule o valor de x na equação: 2x + 5 = 13",
+            "area": "MATEMATICA",
+            "dificuldade": "MEDIO",
+            "tipo": "MULTIPLA_ESCOLHA",
+            "resposta_correta": "4",
+            "opcoes": ["3", "4", "5", "6"],
+            "padrao_sistema": true,
+            "vezes_utilizada": 0,
+            "taxa_acerto": 0.0
+        }
+    },
+    {
+        "model": "atividades.questaoBanco",
+        "pk": 8,
+        "fields": {
+            "conteudo": "Cite um exemplo de ser vivo unicelular.",
+            "area": "BIOLOGIA",
+            "dificuldade": "MEDIO",
+            "tipo": "DISSERTATIVA",
+            "resposta_correta": "Bactérias ou amebas ou paramécios",
+            "opcoes": [],
+            "padrao_sistema": true,
+            "vezes_utilizada": 0,
+            "taxa_acerto": 0.0
+        }
+    },
+    {
+        "model": "atividades.questaoBanco",
+        "pk": 9,
+        "fields": {
+            "conteudo": "Qual é a fórmula da água?",
+            "area": "QUIMICA",
+            "dificuldade": "FACIL",
+            "tipo": "MULTIPLA_ESCOLHA",
+            "resposta_correta": "H2O",
+            "opcoes": ["H2O", "CO2", "O2", "NaCl"],
+            "padrao_sistema": true,
+            "vezes_utilizada": 0,
+            "taxa_acerto": 0.0
+        }
+    },
+    {
+        "model": "atividades.questaoBanco",
+        "pk": 10,
+        "fields": {
+            "conteudo": "A Inconfidência Mineira ocorreu em qual período histórico?",
+            "area": "HISTORIA",
+            "dificuldade": "MEDIO",
+            "tipo": "MULTIPLA_ESCOLHA",
+            "resposta_correta": "Século XVIII",
+            "opcoes": ["Século XVI", "Século XVII", "Século XVIII", "Século XIX"],
+            "padrao_sistema": true,
+            "vezes_utilizada": 0,
+            "taxa_acerto": 0.0
+        }
+    },
+    {
+        "model": "atividades.questaoBanco",
+        "pk": 11,
+        "fields": {
+            "conteudo": "Identifique o predicado verbal: 'O aluno chegou cedo.'",
+            "area": "PORTUGUES",
+            "dificuldade": "MEDIO",
+            "tipo": "MULTIPLA_ESCOLHA",
+            "resposta_correta": "chegou cedo",
+            "opcoes": ["O aluno", "chegou", "chegou cedo", "cedo"],
+            "padrao_sistema": true,
+            "vezes_utilizada": 0,
+            "taxa_acerto": 0.0
+        }
+    },
+    {
+        "model": "atividades.questaoBanco",
+        "pk": 12,
+        "fields": {
+            "conteudo": "O que é um pintor renascentista brasileiro?",
+            "area": "ARTES",
+            "dificuldade": "MEDIO",
+            "tipo": "DISSERTATIVA",
+            "resposta_correta": "Exemplos: Anita Malfatti, Tarsila do Amaral",
+            "opcoes": [],
+            "padrao_sistema": true,
+            "vezes_utilizada": 0,
+            "taxa_acerto": 0.0
+        }
+    },
+    {
+        "model": "atividades.questaoBanco",
+        "pk": 13,
+        "fields": {
+            "conteudo": "O Brasil é dividido em quantas regiões?",
+            "area": "GEOGRAFIA",
+            "dificuldade": "FACIL",
+            "tipo": "MULTIPLA_ESCOLHA",
+            "resposta_correta": "5",
+            "opcoes": ["4", "5", "6", "7"],
+            "padrao_sistema": true,
+            "vezes_utilizada": 0,
+            "taxa_acerto": 0.0
+        }
+    },
+    {
+        "model": "atividades.questaoBanco",
+        "pk": 14,
+        "fields": {
+            "conteudo": "Qual é a velocidade da luz no vácuo?",
+            "area": "FISICA",
+            "dificuldade": "DIFICIL",
+            "tipo": "MULTIPLA_ESCOLHA",
+            "resposta_correta": "300.000 km/s",
+            "opcoes": ["150.000 km/s", "300.000 km/s", "450.000 km/s", "600.000 km/s"],
+            "padrao_sistema": true,
+            "vezes_utilizada": 0,
+            "taxa_acerto": 0.0
+        }
+    },
+    {
+        "model": "atividades.questaoBanco",
+        "pk": 15,
+        "fields": {
+            "conteudo": "Complete: I ___ a student. (sou)",
+            "area": "INGLES",
+            "dificuldade": "MEDIO",
+            "tipo": "COMPLETAR",
+            "resposta_correta": "am",
+            "opcoes": ["am", "is", "are", "be"],
+            "padrao_sistema": true,
+            "vezes_utilizada": 0,
+            "taxa_acerto": 0.0
+        }
+    },
+    {
+        "model": "atividades.questaoBanco",
+        "pk": 16,
+        "fields": {
+            "conteudo": "Quem escreveu 'Os Lusíadas'?",
+            "area": "LITERATURA",
+            "dificuldade": "MEDIO",
+            "tipo": "MULTIPLA_ESCOLHA",
+            "resposta_correta": "Luís de Camões",
+            "opcoes": ["Fernando Pessoa", "Machado de Assis", "Luís de Camões", "Carlos Drummond de Andrade"],
+            "padrao_sistema": true,
+            "vezes_utilizada": 0,
+            "taxa_acerto": 0.0
+        }
+    },
+    {
+        "model": "atividades.questaoBanco",
+        "pk": 17,
+        "fields": {
+            "conteudo": "O que é a fotossíntese?",
+            "area": "BIOLOGIA",
+            "dificuldade": "MEDIO",
+            "tipo": "DISSERTATIVA",
+            "resposta_correta": "Processo pelo qual plantas produzem glicose e oxigênio usando água, dióxido de carbono e luz solar",
+            "opcoes": [],
+            "padrao_sistema": true,
+            "vezes_utilizada": 0,
+            "taxa_acerto": 0.0
+        }
+    },
+    {
+        "model": "atividades.questaoBanco",
+        "pk": 18,
+        "fields": {
+            "conteudo": "Quantos continentes existem no planeta Terra?",
+            "area": "GEOGRAFIA",
+            "dificuldade": "FACIL",
+            "tipo": "MULTIPLA_ESCOLHA",
+            "resposta_correta": "7",
+            "opcoes": ["5", "6", "7", "8"],
+            "padrao_sistema": true,
+            "vezes_utilizada": 0,
+            "taxa_acerto": 0.0
+        }
+    },
+    {
+        "model": "atividades.questaoBanco",
+        "pk": 19,
+        "fields": {
+            "conteudo": "Qual é a derivada de x²?",
+            "area": "MATEMATICA",
+            "dificuldade": "DIFICIL",
+            "tipo": "MULTIPLA_ESCOLHA",
+            "resposta_correta": "2x",
+            "opcoes": ["x", "2x", "x²", "2x²"],
+            "padrao_sistema": true,
+            "vezes_utilizada": 0,
+            "taxa_acerto": 0.0
+        }
+    },
+    {
+        "model": "atividades.questaoBanco",
+        "pk": 20,
+        "fields": {
+            "conteudo": "O que é filosofia?",
+            "area": "FILOSOFIA",
+            "dificuldade": "DIFICIL",
+            "tipo": "DISSERTATIVA",
+            "resposta_correta": "Estudo dos problemas fundamentais relacionados à existência, ao conhecimento, à verdade, aos valores morais e estéticos, à mente e à linguagem",
+            "opcoes": [],
+            "padrao_sistema": true,
+            "vezes_utilizada": 0,
+            "taxa_acerto": 0.0
+        }
+    }
+]

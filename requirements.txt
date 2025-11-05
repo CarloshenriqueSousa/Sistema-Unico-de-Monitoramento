@@ -1,0 +1,45 @@
+# Autenticação e autorização
+djangorestframework
+djangorestframework-simplejwt
+django-allauth
+django-guardian
+
+# Segurança e proteção
+django-cors-headers
+django-axes
+django-environ
+cryptography
+django-secure
+
+# Histórico e auditoria
+django-simple-history
+django-reversion
+django-auditlog
+
+# Logging e monitoramento
+sentry-sdk
+django-prometheus
+structlog
+
+# Performance e tarefas assíncronas
+django-redis
+celery
+django-q
+django-cachalot
+
+# Validação e proteção de inputs
+pydantic
+django-filter
+django-cleanup
+python-magic
+
+# Uploads e arquivos
+django-storages
+Pillow
+
+# Desenvolvimento e documentação
+drf-yasg
+drf-spectacular
+django-debug-toolbar
+pytest
+pytest-django
