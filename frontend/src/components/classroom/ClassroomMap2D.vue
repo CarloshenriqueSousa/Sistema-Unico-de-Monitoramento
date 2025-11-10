@@ -73,7 +73,7 @@ const seatColor = '#0f1e3f'
 const seatAccent = '#2d531a'
 const teacherColor = '#d97706'
 
-let dragging: null | { type: 'seat' | 'teacher'; index: number; offsetX: number; offsetY: number } = null
+let dragging: null | { type: 'seat' | 'teacher' | 'object'; index: number; offsetX: number; offsetY: number } = null
 let selection: number[] = []
 let boxSelect: null | { x: number; y: number; w: number; h: number } = null
 
@@ -440,23 +440,6 @@ function deleteSelection() {
   render()
 }
 
-function saveLayout() {
-  const data = { seats: seats.value, teacher: teacher.value }
-  localStorage.setItem('sum-map-layout', JSON.stringify(data))
-}
-
-function loadLayout() {
-  const raw = localStorage.getItem('sum-map-layout')
-  if (!raw) return
-  try {
-    const data = JSON.parse(raw)
-    if (Array.isArray(data.seats) && data.teacher) {
-      seats.value = data.seats
-      teacher.value = data.teacher
-      render()
-    }
-  } catch {}
-}
 
 function exportPng() {
   const canvas = canvasRef.value

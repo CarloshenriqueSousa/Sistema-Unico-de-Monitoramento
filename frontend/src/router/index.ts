@@ -173,6 +173,12 @@ const routes: RouteRecordRaw[] = [
         meta: { title: 'Análise de Alunos' }
       },
       {
+        path: 'mapeamentos',
+        name: 'professor-mapeamentos-list',
+        component: () => import('@/views/professor/TeacherMapeamentosList.vue'),
+        meta: { title: 'Meus Mapeamentos' }
+      },
+      {
         path: 'chat',
         name: 'professor-chat',
         component: () => import('@/views/professor/ChatView.vue'),

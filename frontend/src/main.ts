@@ -19,4 +19,14 @@ app.use(router)
   }
 })()
 
+// Global error handler
+app.config.errorHandler = (err, instance, info) => {
+  // Log não intrusivo e caminho para observabilidade futura
+  console.error('[Vue Error]', { err, info })
+}
+
+window.addEventListener('unhandledrejection', (e) => {
+  console.error('[Promise Rejection]', e.reason)
+})
+
 app.mount('#app')
